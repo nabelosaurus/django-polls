@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 
-from . models import Question
+from . models import Choice, Question
 
 # Create your views here.
 
@@ -37,7 +37,7 @@ def vote(request, question_id=1):
             'question': question,
             'error_message': "You didn't select a choice",
         }
-        return render(request, 'polls/vote.html', context)
+        return render(request, 'polls/detail.html', context)
     else:
         selected_choice.votes += 1
         selected_choice.save()
